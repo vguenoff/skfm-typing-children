@@ -1,25 +1,20 @@
-/**
- * Things you could try:
- *
- * JSX.Element;
- * JSX.Element | JSX.Element[];
- * React.ReactNode;
- * React.ReactChildren;
- * React.ReactChild[];
- */
+import { PropsWithChildren } from 'react'
 
-type BoxProps = { children: any /* 👈 Get rid of this! */ };
+type BoxProps = PropsWithChildren<{
+  style?: React.CSSProperties
+}>
+// type BoxProps = { children: React.ReactNode }
 
-const Box = ({ children }: BoxProps) => {
+const Box = ({ children, style }: BoxProps) => {
   return (
     <section
       className="m-4"
-      style={{ padding: '1em', border: '5px solid purple' }}
+      style={{ padding: '1em', border: '5px solid purple', ...style }}
     >
       {children}
     </section>
-  );
-};
+  )
+}
 
 const Application = () => {
   return (
@@ -36,7 +31,7 @@ const Application = () => {
         </Box>
       </Box>
     </main>
-  );
-};
+  )
+}
 
-export default Application;
+export default Application
